@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" packagePrefix="App\" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/fmt/configuracion" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/fmt/fmt" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/fmt/logger" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/fmt/usuarios" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/simple-validator/simple-validator" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

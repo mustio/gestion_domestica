@@ -1,0 +1,10 @@
+{
+    "name": "fmt/fmt",
+    "description": "Framework para Ministerio de Transporte",
+    "type": "library",
+    "license": "proprietary",
+    "require": {},
+	"autoload":{
+		"psr-4":{"FMT\\":"src"}
+	}
+}

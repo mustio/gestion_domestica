@@ -1,0 +1,150 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "ccf24249e2a674f57d510a46e752191e",
+    "content-hash": "7f4caaddeaf46cb5caef54d0025bdabe",
+    "packages": [
+        {
+            "name": "fmt/configuracion",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "http://palviggi@192.168.150.63:3000/fmt/configuracion.git",
+                "reference": "c57b988645dee70bd23b30931904038c6fba5eb7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://desa.transporte.gob.ar/packages/dist/fmt/configuracion/fmt-configuracion-1.0.1-72c8a1.zip",
+                "reference": "c57b988645dee70bd23b30931904038c6fba5eb7",
+                "shasum": "bcf5ef2b4047142ae226d3301bf9f7b3556618c2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "FMT\\": "src"
+                }
+            },
+            "description": "configuracion",
+            "time": "2016-09-02 12:51:29"
+        },
+        {
+            "name": "fmt/fmt",
+            "version": "0.2.2",
+            "source": {
+                "type": "git",
+                "url": "http://palviggi@192.168.150.63:3000/fmt/fmt.git",
+                "reference": "e46528b8d31eadd6355c7429f10aafb16593b11d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://desa.transporte.gob.ar/packages/dist/fmt/fmt/fmt-fmt-0.2.2-54e6ab.zip",
+                "reference": "e46528b8d31eadd6355c7429f10aafb16593b11d",
+                "shasum": "715aa84f3832bfd70d6a48db32d9f68a73381f6f"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "FMT\\": "src"
+                }
+            },
+            "license": [
+                "proprietary"
+            ],
+            "description": "Framework para Ministerio de Transporte",
+            "time": "2017-05-22 15:16:36"
+        },
+        {
+            "name": "fmt/logger",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "http://palviggi@192.168.150.63:3000/fmt/logger.git",
+                "reference": "549bcc0c7c3fba0c272e1474fdbf07cef6ea31b0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://desa.transporte.gob.ar/packages/dist/fmt/logger/fmt-logger-1.0.0-3ef3fe.zip",
+                "reference": "549bcc0c7c3fba0c272e1474fdbf07cef6ea31b0",
+                "shasum": "0e0d4c965acf96f92245471317be611abf140920"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "FMT\\": "src"
+                }
+            },
+            "description": "Api para el log de actividades de una aplicación.",
+            "time": "2017-08-10 15:27:47"
+        },
+        {
+            "name": "fmt/usuarios",
+            "version": "1.3",
+            "source": {
+                "type": "git",
+                "url": "http://palviggi@192.168.150.63:3000/fmt/usuarios.git",
+                "reference": "1158c8bbdd2c0affc773963ba0348f68d78f2318"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://desa.transporte.gob.ar/packages/dist/fmt/usuarios/fmt-usuarios-1.3-2ef3a3.zip",
+                "reference": "1158c8bbdd2c0affc773963ba0348f68d78f2318",
+                "shasum": "417c5f4999d88efa3c57a9aafce3cde5ede74344"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "FMT\\": "src"
+                }
+            },
+            "description": "clase para acceder a los datos de la api de usuarios",
+            "time": "2017-08-09 20:02:48"
+        },
+        {
+            "name": "simple-validator/simple-validator",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cangelis/simple-validator.git",
+                "reference": "87aabf6a667cbea92efc2f88e2eea2a4121a6472"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cangelis/simple-validator/zipball/87aabf6a667cbea92efc2f88e2eea2a4121a6472",
+                "reference": "87aabf6a667cbea92efc2f88e2eea2a4121a6472",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "SimpleValidator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Can Gelis",
+                    "email": "geliscan@gmail.com"
+                }
+            ],
+            "description": "Yet another validation class for PHP",
+            "time": "2017-06-29 10:09:43"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

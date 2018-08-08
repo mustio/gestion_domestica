@@ -1,0 +1,8 @@
+.tipo_carga{display:none}
+#container:checked ~ #carga_container{display:block} 
+#nocontainer:checked ~ #carga_nocontainer{display:block}
+#pasajero:checked ~ #carga_pasajero{display:block}
+[type='radio']{display: none;}
+input[type="radio"]:checked+label { background-color: #1193D2;color: #fff;}
+input[type="radio"] +label { color: #a0a3a5;}
+h5{margin-left: 15px}

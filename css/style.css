@@ -1,0 +1,29 @@
+#error .col-md-12{padding: 0px}
+#preview{
+  width: 400px;
+}
+
+.redondo{
+  border-radius: 15px;
+  height:2rem;
+  width:2rem;
+  display: block;
+}
+
+.dt-buttons >a {
+background: #0091EF !important;
+font-weight: bold;
+color:#ffffff;
+}
+
+.fa-times-circle{
+  color:#dc3545;
+}
+
+.fa-check-circle-o{
+  color: #28a745;
+}
+
+#tabla tr td:nth-child(14),td:nth-child(11) {
+  text-align: center;
+}

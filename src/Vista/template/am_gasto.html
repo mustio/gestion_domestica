@@ -1,0 +1,44 @@
+<form id="formulario" method='POST' enctype="multipart/form-data">
+  <div class="row">
+    <div class="form-group col-xs-6">
+      <label for="nombre" class="control-label">Concepto</label>
+      <input type="text" class="form-control" name="nombre" placeholder="Por ejemplo: Autoservicio, Sueldo, Coto." id="nombre"  value="{{{NOMBRE}}}">
+    </div>
+    <div class="form-group col-xs-6">
+      <label for="tipo" class="control-label">Tipo</label>
+      <select class="form-control" name="tipo" id="tipo">
+        <option value="" disabled>Seleccione la categoria por favor</option>
+        <option value="1">Ingreso</option>
+        <option value="2">Gasto</option>
+      </select>
+    </div>
+    <div class="form-group col-xs-6">
+      <label for="monto" class="control-label">Monto $</label>
+      <input type="text" class="form-control" name="monto" placeholder="Por ejemplo: 1220" id="monto"  value="{{{MONTO}}}">
+    </div>
+    <div class='col-sm-6'>
+      <div class="form-group">
+        <label for="fecha" class="control-label">Fecha</label>
+        <div class='input-group date' id='fecha'>
+          <input type='text' class="form-control" />
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group col-xs-12">
+      <label for="descripcion" class="control-label">Descripcion</label>
+      <textarea class="form-control" name="descripcion" id="descripcion" cols="30" maxlength="250" rows="10">{{{DESCRIPCION}}}</textarea>
+    </div>
+
+  <div class="row btnra">
+    <div class="col-md-8 text-right">
+      <button type="submit" class="btn btn-primary" data-placement="left" id="guardar">GUARDAR</button>
+      <a href="{{{HTTP}}}/{{{CONTROL}}}/listar" class="btn btn-default" >CANCELAR</a>
+      <button type="reset" class="btn btn-warning" name="button">Reset</button>
+    </div>
+  </div>
+  </div>
+</form>
