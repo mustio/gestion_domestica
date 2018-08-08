@@ -1,5 +1,6 @@
 <?php
 namespace App\Modelo;
+use DateTime;
 use FMT\Usuarios;
 use FMT\Modelo;
 use \SimpleValidator\Validator;
@@ -14,9 +15,23 @@ class Gasto extends Modelo {
   public $descripcion;
   public $monto;
   public $tipo;
+  const INGRESO = 1;
+  const EGRESO = 2;
+  private static $instancia;
 
   public function alta(){
       // TODO: Implement alta() method.
+  }
+
+  protected function __construct() {
+  }
+
+  public static function singleton(){
+  	if (!static::$instancia instanceof static){
+  		$clase =   __CLASS__;
+  		static::$instancia = new $clase;
+	}
+	return static::$instancia;
   }
 
 
@@ -57,7 +72,7 @@ class Gasto extends Modelo {
           $egreso->id = $resultado["id"];
           $egreso->nombre= $resultado["nombre"];
           $egreso->descripcion = $resultado['descripcion'];
-          $egreso->fecha = $resultado['fecha'];
+          $egreso->fecha = DateTime::createFromFormat('Y-m-d',$resultado['fecha']);
         }
 	}
     return $egreso;
@@ -65,19 +80,18 @@ class Gasto extends Modelo {
 
   public function alta_ingreso() {
     $conexion = new Conexion;
-    $resultado= $conexion->consulta(Conexion::INSERT, 
-    "INSERT INTO ingreso
-		(nombre,descripcion, fecha, monto)
-		VALUES
-		(:nombre, :descripcion,:fecha, :monto)",
+    $sql =  "INSERT INTO ingreso
+			(nombre, descripcion, fecha, monto)
+			VALUES
+		( :nombre, :descripcion,:fecha, :monto )";
+    $resultado= $conexion->consulta(Conexion::INSERT, $sql,
 		[
-	
 			":nombre" => $this->nombre,
 			":descripcion" => $this->descripcion,
 			":fecha" => $this->fecha,
-			":monto" => $this->monto,
-
+			":monto" => $this->monto
 		]);
+    var_dump($resultado, $this);exit;
     
     return $resultado;    
   }
@@ -146,43 +160,57 @@ class Gasto extends Modelo {
 
 
   
-  public static function listar(){
-    $sql = "SELECT  id,foto, nombre
-    FROM marca
-    WHERE borrado =0
-    ORDER BY nombre ASC";
-    $mbd = new Conexion;
-    $resultado = $mbd->consulta(Conexion::SELECT, $sql);
-    return ($resultado) ? $resultado : [];
-  }
-	
-	public static function listar_cmb_marca(){
-		$sql = "SELECT  id,nombre
-		FROM marca
+	public static function listar_ingreso(){
+		$sql = "SELECT  id,fecha,nombre,descripcion,monto
+		FROM ingreso
 		WHERE borrado = 0
-		ORDER BY nombre DESC";
+		ORDER BY fecha ASC";
 		$mbd = new Conexion;
 		$resultado = $mbd->consulta(Conexion::SELECT, $sql);
-		if ($resultado) {
-			foreach ($resultado as $key => &$value) {
-				$aux[$value['id']] = $value['nombre'];
-			}
-		}	else {
-			$aux[0] = "sin dato";
-		}
-		return $aux;
-	}  
-  
-  public function validar(){
+		return ($resultado) ? $resultado : [];
+	}
+
+	public static function listar_egreso(){
+		$sql = "SELECT  id,fecha,nombre,descripcion,monto
+    FROM egreso
+    WHERE borrado = 0
+    ORDER BY fecha ASC";
+		$mbd = new Conexion;
+		$resultado = $mbd->consulta(Conexion::SELECT, $sql);
+		return ($resultado) ? $resultado : [];
+	}
+
+	/**
+	 * @return bool
+	 * @throws \SimpleValidator\SimpleValidatorException
+	 */
+	public function validar(){
 		$rules = [
-			"foto" => ["required"],
-			"nombre" => ["required",'max_length(80)'],
-		];   
-    $validacion = Validator::validate((array)$this, $rules);
+			"nombre" => ["required"],
+			"descripcion" => ["required",'max_length(250)'],
+			"tipo" => ["required",'integer'],
+			"monto" => ["required",'max_length(80)'],
+			"fecha" => ["required",
+				'fecha_valida' => function($val){
+					return (DateTime::createFromFormat('Y-m-d',$val)) ? true : false;
+				}
+			],
+		];
+
+		$names = [
+		  'nombre' => 'Concepto',
+		  'fecha' => 'Fecha',
+		  'descripcion' => "Descripcion",
+		  'monto' => "Monto",
+		  'tipo' => "Tipo"
+	  ];
+
+    $validacion = Validator::validate((array)$this, $rules, $names);
     $validacion->customErrors([
-      "required"      => "Campo :attribute requerido",                               
-      "numeric"       => "El formato de :attribute es inválido. Se aceptan sólo valores numéricos",                               
-      "max_length"    => "El campo :attribute debe tener como máximo :params(0) caracteres"                               
+      "required"      => "Campo <strong>:attribute</strong> requerido",
+      "numeric"       => "Seleccione un <strong>:attribute </strong> válido",
+      "max_length"    => "El campo <strong>:attribute</strong> debe tener como máximo :params(0) caracteres",
+		"fecha_valida" => "La <strong>:attribute</strong> ingresa no es valida"
     ]);
     if ($validacion->isSuccess() == true) {
       return true;

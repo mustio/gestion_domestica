@@ -2,11 +2,11 @@
   <div class="row">
     <div class="form-group col-xs-6">
       <label for="nombre" class="control-label">Concepto</label>
-      <input type="text" class="form-control" name="nombre" placeholder="Por ejemplo: Autoservicio, Sueldo, Coto." id="nombre"  value="{{{NOMBRE}}}">
+      <input type="text" class="form-control" name="nombre" placeholder="Por ejemplo: Autoservicio, Sueldo, Coto." id="nombre"  value="{{{NOMBRE}}}" required>
     </div>
     <div class="form-group col-xs-6">
       <label for="tipo" class="control-label">Tipo</label>
-      <select class="form-control" name="tipo" id="tipo">
+      <select class="form-control" name="tipo" id="tipo" required>
         <option value="" disabled>Seleccione la categoria por favor</option>
         <option value="1">Ingreso</option>
         <option value="2">Gasto</option>
@@ -14,13 +14,13 @@
     </div>
     <div class="form-group col-xs-6">
       <label for="monto" class="control-label">Monto $</label>
-      <input type="text" class="form-control" name="monto" placeholder="Por ejemplo: 1220" id="monto"  value="{{{MONTO}}}">
+      <input type="text" class="form-control" name="monto" placeholder="Solo valores numericos" id="monto"  value="{{{MONTO}}}" required>
     </div>
     <div class='col-sm-6'>
       <div class="form-group">
         <label for="fecha" class="control-label">Fecha</label>
-        <div class='input-group date' id='fecha'>
-          <input type='text' class="form-control" />
+        <div class='input-group' id='fecha'>
+          <input type='text' class="form-control" name="fecha" value="{{{FECHA}}}">
           <span class="input-group-addon">
             <span class="glyphicon glyphicon-calendar"></span>
           </span>

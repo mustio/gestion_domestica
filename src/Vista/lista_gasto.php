@@ -11,27 +11,31 @@
 	$vars['COMPONENTS']['CONTENT'] = (new Vista(VISTAS_PATH.'template/tabla.html',['OPTIONS'=>['CLEAN'=>false]]))->show();
 
 
-	$vars['SUBTITULO'] = 'Listado de Marcas';
-	$vars['TITLE']			= 'Sistema Rossy';
-	$vars['TITULO']			= 'Sistema Rossy';
-	$vars['BOTONERA'][] = ['HTTP'=> HTTP_PATH.'/index.php','ACCION' => 'alta','CONTROL' => 'marca']; 
+	$vars['SUBTITULO'] = 'Listado de '.$tipo;
+	$vars['TITLE']			= 'Control y Registro de Gastos';
+	$vars['TITULO']			= 'Control y Registro de Gastos';
+	$vars['BOTONERA'][] = ['HTTP'=> HTTP_PATH.'/index.php','ACCION' => $alta,'CONTROL' => 'gasto'];
 	$vars['TITULOS'] = [
-						['TITULO'=>'nombre'],
-						['TITULO'=>'Foto'],
+						['TITULO'=>'Fecha'],
+						['TITULO'=>'Nombre'],
+						['TITULO'=>'Descripcion'],
+						['TITULO'=>'Monto'],
 						['TITULO'=>'Acción']
 					];
+
 		foreach ($data as $value) {
 			$vars['ROW'][] = ['COL' => [
-				['CONT'=>$value['nombre']],
-				['CONT'=>'<img src="'.HTTP_PATH.'/fotos/marcas/'.$value["foto"].'" width="100" alt="" />'],
+				['CONT'=>$value['fecha']],
+				['CONT'=> $value['nombre']],
+				['CONT'=> "<span  data-toggle=\"tooltip\" data-placement=\"top\" title='{$value["detalle"]}' >{$value['descripcion']}</span>"],
+				['CONT'=> $value['monto']],
 				['CONT' => '<span class="acciones">
-				<a href="'.HTTP_PATH.'/index.php/marca/modificar/'.$value['id'].'" data-toggle="tooltip" data-placement="top" data-id="'.$value['id'].'" title="Ver/Modificar" class="dis" data-toggle="modal"><i class="fa fa-eye"></i><i class="fa fa-pencil"></i></a>
+				<a href="'.HTTP_PATH.'/index.php/marca/modificar/'.$value['id'].'" data-toggle="tooltip" data-placement="top" data-id="'.$value['id'].'" title="Ver/Modificar" class="dis" ><i class="fa fa-eye"></i><i class="fa fa-pencil"></i></a>
 				<a href="'.HTTP_PATH.'/index.php/marca/baja/'.$value['id'].'" data-toggle="tooltip" data-placement="top" title="Eliminar" target="_self"><i class="fa fa-trash"></i></a>
 				</span>']
 			]
 		];
 	}
-
 
 	$html = (new Vista(VISTAS_PATH.'template/base.html',$vars))->show();
 
